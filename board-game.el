@@ -3,6 +3,7 @@
 ;; Copyright (C) 2018
 
 ;; Author: Florian Tauber
+;; URL: https://github.com/computeremotion/board-game
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
