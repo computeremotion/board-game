@@ -28,7 +28,7 @@
 
 ;; Decreased value for fast feedback.
 ;; Increase value for doing real load test.
-(defconst LOAD-TEST-INPUT-SIZE 10
+(defconst LOAD-TEST-INPUT-SIZE 15
   "The default input size for doing load tests.")
 (defconst ARBITRARY-INTEGER-FOR-TESTING 42
   "This arbitrary Integer is used for testing.")
@@ -383,7 +383,7 @@ Note that the two input lists should be of equal length."
   (should
    (equal
     (setup-board
-     (seq-reduce #'play (make-vector LOAD-TEST-INPUT-SIZE :FLIP) GAME-0))
+     (seq-reduce #'play (make-vector (* 2 LOAD-TEST-INPUT-SIZE) :FLIP) GAME-0))
     BOARD-0))
   (should (equal (setup-board (seq-reduce #'play [:FLIP :FLIP :FLIP] GAME-0))
                  (new-board CARDS-0
@@ -570,8 +570,10 @@ perform final move ( FM )."
                ARBITRARY-INTEGER-FOR-TESTING)))
   (should
    (equal
-    (shuffle (make-vector LOAD-TEST-INPUT-SIZE ARBITRARY-INTEGER-FOR-TESTING))
-    (make-list LOAD-TEST-INPUT-SIZE ARBITRARY-INTEGER-FOR-TESTING))))
+    (shuffle (make-vector LOAD-TEST-INPUT-SIZE
+                          ARBITRARY-INTEGER-FOR-TESTING))
+    (make-list LOAD-TEST-INPUT-SIZE
+               ARBITRARY-INTEGER-FOR-TESTING))))
 ;; Sequence<X> -> List<X>
 (defun shuffle (seq0)
   "Randomly shuffle Sequence ( SEQ0 )."
