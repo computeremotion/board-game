@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; This program provides a mode for playing ba flashcard board game.
+;; This program provides a mode for playing a flashcard board game.
 
 ;;; Code:
 
