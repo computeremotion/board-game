@@ -26,32 +26,26 @@
 
 (require 'seq)
 
-;; Decreased value for fast feedback.
+;; value for fast feedback.
 ;; Increase value for doing real load test.
 (defconst LOAD-TEST-INPUT-SIZE 15
   "The default input size for doing load tests.")
 (defconst ARBITRARY-INTEGER-FOR-TESTING 42
   "This arbitrary Integer is used for testing.")
 
-;;;; Model:
+;;;; model:
 
 ;; a Game is a Sequence of Move elements
 (defconst GAME-0 []
   "The initial game.  ( number of moves played: 0 ).")
 
 ;; a Move is one of:
-(defconst :FLIP ':FLIP
-  "Flip the card on top.")
-(defconst :YEA ':YEA
-  "When answer correct, remove card from deck.")
-(defconst :NAY ':NAY
-  "When answer wrong, put card into back of deck.")
-(defconst :QUIT ':QUIT
-  "When user wants to quit playing the game.")
-(defconst :RESET ':RESET
-  "Reset game to initial state.")
-(defconst :SHUFFLE ':SHUFFLE
-  "Shuffle the cards.")
+;; :FLIP "Flip the card on top."
+;; :YEA "When answer correct, remove card from deck."
+;; :NAY "When answer wrong, put card into back of deck."
+;; :QUIT "When user wants to quit playing the game."
+;; :RESET "Reset game to initial state."
+;; :SHUFFLE "Shuffle the cards."
 ;; String ( representing an answer :GUESS move )
 
 (ert-deftest move-legal-p-test ()
@@ -353,6 +347,7 @@ Note that the two input lists should be of equal length."
    (map-pair-to-card (zip (flatten KATAKANA-TABLE)
                           (flatten ROMANJI-TABLE))))
   "The initial flashcards.  ( number of moves played: 0 ).")
+
 (defconst FIRST-CARD-0 (car CARDS-0)
   "The first card in the initial deck of cards.")
 (defconst FIRST-CARD-0-ANSWER (card-answer FIRST-CARD-0)
@@ -485,9 +480,7 @@ perform final move ( FM )."
       (let ((prev-result (gethash arg memo)))
         (or prev-result
             (let ((result (funcall fn arg)))
-              (puthash arg
-                       result
-                       memo)
+              (puthash arg result memo)
               result))))))
 
 ;; Pair<List<Card>,Game> -> List<Card>
